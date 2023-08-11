@@ -23,20 +23,16 @@ const IDATA = {
 const res4 :IRData3<IDATA>=IDATA
 res4.a2 = 23
 
-interface Person {
+function getArrayItem<T, K extends keyof T>(arr: T[], index: number, key: K): T[K] {
 
-    firstName: string;
+    const item = arr[index];
   
-    lastName: string;
-  
-  }
-  
-  
-  
-  function fullName<T extends Person>(person: T): string {
-  
-    return `${person.firstName} ${person.lastName}`;
+    return item[key];
   
   }
   
-  const r = fullName({firstName:"rr", lastName:"r"})
+  
+  
+  const users = [ { name: 'John', age: 30 }, { name: 'Mary', age: 25 },];
+  
+  const r4 = (getArrayItem(users, 0, 'name'))
